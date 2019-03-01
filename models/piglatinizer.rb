@@ -1,43 +1,25 @@
-class PigLatinizer 
-  
-  attr_reader :phrase
-  
-  # def splits
-  #   phrase.split(" ")
-  # end
-  
-  def piglatinize(phrase)
-    array = phrase.split(" ")
-    array.map do |word|
-      letters = word.split("")
-      #binding.pry
-      if !letters.first.scan(/[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]/).empty? && !letters[1].scan(/[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]/).empty? && !letters[2].scan(/[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]/).empty? 
-        #binding.pry
-        c = letters.shift 
-        letters << c
-        d = letters.shift 
-        letters << d
-        e = letters.shift 
-        letters << e
-        letters << "ay"
-        letters.join
-      elsif !letters.first.scan(/[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]/).empty? && !letters[1].scan(/[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]/).empty? 
-        c = letters.shift 
-        letters << c 
-        d = letters.shift 
-        letters << d 
-        letters << "ay"
-        letters.join
-      elsif !letters.first.scan(/[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]/).empty? 
-        c = letters.shift 
-        letters << c
-        letters << "ay"
-        letters.join
-      else
-        letters << "way"
-        letters.join
+class PigLatinizer
+
+
+
+     def piglatinize(phrase)
+        vowels = ['a','e','i','o','u']
+        original = phrase.split
+        completed_phrase = []
+        original.each do |word|
+          x = []
+          letters = word.split("")
+          if vowels.include?(letters.first.downcase)
+            x << 'w'
+          end
+          while !vowels.include?(letters.first.downcase)
+            x << letters.shift
+          end
+          x << 'ay'
+          completed_phrase << letters.join + x.join
+        end
+        completed_phrase.join(" ")
       end
-    end.join(" ")
-  end
-  
-end
+
+
+ end
