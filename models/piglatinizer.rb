@@ -1,7 +1,7 @@
 class PigLatinizer
   
-  def piglatinize(input_str)
-    input_str.split(" ").length == 1 ? piglatinize_word(input) : piglatinize_sentence(input)
+  def piglatinize(input)
+    input.split(" ").length == 1 ? piglatinize_word(input) : piglatinize_sentence(input)
   end
 
   def consonant?(char)
