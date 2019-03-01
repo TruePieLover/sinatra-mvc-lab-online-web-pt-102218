@@ -1,6 +1,5 @@
 require_relative 'config/environment'
 require_relative 'models/piglatinizer'
-require 'pry'
 
 class App < Sinatra::Base
     
